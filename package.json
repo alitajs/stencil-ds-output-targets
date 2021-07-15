@@ -8,6 +8,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
+    "build-react":"cd packages/react-output-target && yarn run build",
     "test": "lerna run test",
     "changelog": "lerna-changelog",
     "publish": "lerna publish"

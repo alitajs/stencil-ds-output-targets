@@ -18,7 +18,11 @@ export async function reactProxyOutput(
   const rootDir = config.rootDir as string;
   const pkgData = await readPackageJson(rootDir);
 
-  const finalText = generateProxies(config, filteredComponents, pkgData, outputTarget, rootDir);
+  let finalText = generateProxies(config, filteredComponents, pkgData, outputTarget, rootDir);
+  if (outputTarget.removePrefix) {
+    const t = new RegExp(' ' + outputTarget.removePrefix, 'g');
+    finalText = finalText.replace(t, ' ');
+  }
   await compilerCtx.fs.writeFile(outputTarget.proxiesFile, finalText);
   await copyResources(config, outputTarget);
 }
@@ -49,8 +53,8 @@ import { createReactComponent } from './react-component-lib';\n`;
   const typeImports = !outputTarget.componentCorePackage
     ? `import type { ${IMPORT_TYPES} } from '${normalizePath(componentsTypeFile)}';\n`
     : `import type { ${IMPORT_TYPES} } from '${normalizePath(
-        outputTarget.componentCorePackage,
-      )}';\n`;
+      outputTarget.componentCorePackage,
+    )}';\n`;
 
   let sourceImports = '';
   let registerCustomElements = '';

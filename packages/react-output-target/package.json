@@ -1,5 +1,5 @@
 {
-  "name": "@stencil/react-output-target",
+  "name": "@alitajs/react-output-target",
   "version": "0.0.9",
   "description": "React output target for @stencil/core components.",
   "main": "dist/index.cjs.js",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/stencil-ds-output-targets.git"
+    "url": "git+https://github.com/@alitajs/stencil-ds-output-targets.git"
   },
   "author": "Ionic Team",
   "homepage": "https://stenciljs.com/",
